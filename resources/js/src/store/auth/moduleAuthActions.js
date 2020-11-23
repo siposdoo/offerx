@@ -336,7 +336,7 @@ export default {
 
       // Check confirm password
       if (password !== confirmPassword) {
-        reject({message: 'Password doesn\'t match. Please try again.'})
+        reject({message: 'Šifra se ne podudara. Molimo pokušajte poslije.'})
       }
 
       jwt.registerUser(displayName, email, password)

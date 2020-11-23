@@ -67,9 +67,22 @@ const router = new Router({
           }
         },
         {
+          path: '/proizvodi',
+          name: 'Proizvodi',
+          component: () => import('@/views/pages/admin/Proizvodi.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Početna', url: '/' },
+              { title: 'Proizvodi', active: true }
+            ],
+            pageTitle: 'Proizvodi',
+            rule: 'admin'
+          }
+        },
+        {
           path: '/narudzbe',
           name: 'Narudzbe',
-          component: () => import('@/views/apps/user/user-list/UserList.vue'),
+          component: () => import('@/views/pages/admin/Proizvodi.vue'),
           meta: {
             breadcrumb: [
               { title: 'Početna', url: '/' },

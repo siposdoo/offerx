@@ -57,10 +57,11 @@ export default {
 
         // Close animation if passed as payload
         // this.$vs.loading.close()
+ this.$router.push('/').catch(() => {})
 
         this.$vs.notify({
-          title: 'Login Attempt',
-          text: 'You are already logged in!',
+          title: 'Pokušaj prijave',
+          text: 'Već ste prijavljeni!',
           iconPack: 'feather',
           icon: 'icon-alert-circle',
           color: 'warning'
