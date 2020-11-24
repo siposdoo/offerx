@@ -56,7 +56,7 @@ const router = new Router({
         {
           path: '/',
           name: 'dashboard-analytics',
-          component: () => import('@/views/apps/user/user-list/UserList.vue'),
+          component: () => import('./views/DashboardAnalytics.vue'),
           meta: {
             rule: 'superadmin',
             allowAnonymous: false
