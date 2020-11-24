@@ -319,7 +319,15 @@ export default {
 
             resolve(response)
               // Navigate User to homepage
+              if(response.data.userData.userRole==="editor"){
               router.push('/')
+            }
+            else if(response.data.userData.userRole==="superadmin"){
+              router.push('/superadmin')
+            }
+            else{
+              router.push('/admin')
+            }
           } else {
             reject({message: 'Pogresan email ili šifra'})
           }
