@@ -1,8 +1,8 @@
-var AG_GRID_LOCALE_EN = {
+export var AG_GRID_LOCALE_EN = {
   // Set Filter
   selectAll: '(Select All)',
   selectAllSearchResults: '(Select All Search Results)',
-  searchOoo: 'Search...',
+  searchOoo: 'Pretraga...',
   blanks: '(Blanks)',
   noMatches: 'No matches',
 
@@ -103,7 +103,7 @@ var AG_GRID_LOCALE_EN = {
   totalAndFilteredRows: 'Rows',
   more: 'More',
   to: 'to',
-  of: 'of',
+  of: 'od',
   page: 'Page',
   nextPage: 'Next Page',
   lastPage: 'Last Page',

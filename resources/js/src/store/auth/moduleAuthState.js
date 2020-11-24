@@ -7,7 +7,7 @@
   Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
-
+import { isLoggedIn } from '../../auth/authService'
  
 export default {
   isUserLoggedIn: () => {
@@ -15,8 +15,8 @@ export default {
 
     // get firebase current user
     const userInfoLocalStorage = JSON.parse(localStorage.getItem('userInfo')) 
-
-    if (userInfoLocalStorage) isAuthenticated = true
+     
+    if (isLoggedIn()) isAuthenticated = true
     else isAuthenticated = false
 
     return localStorage.getItem('userInfo') && isAuthenticated

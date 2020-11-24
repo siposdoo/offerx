@@ -1,12 +1,4 @@
-<!-- =========================================================================================
-    File Name: AgGridTable.vue
-    Description: Ag Grid table
-    ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
+ 
 
 <template>
   <div id="ag-grid-demo">
@@ -19,7 +11,7 @@
         <div class="mb-4 md:mb-0 mr-4 ag-grid-table-actions-left">
           <vs-dropdown vs-trigger-click class="cursor-pointer">
             <div class="p-4 border border-solid d-theme-border-grey-light rounded-full d-theme-dark-bg cursor-pointer flex items-center justify-between font-medium">
-              <span class="mr-2">{{ currentPage * paginationPageSize - (paginationPageSize - 1) }} - {{ contacts.length - currentPage * paginationPageSize > 0 ? currentPage * paginationPageSize : contacts.length }} of {{ contacts.length }}</span>
+              <span class="mr-2">{{ currentPage * paginationPageSize - (paginationPageSize - 1) }} - {{ products.length - currentPage * paginationPageSize > 0 ? currentPage * paginationPageSize : products.length }} of {{ products.length }}</span>
               <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
             </div>
             <!-- <vs-button class="btn-drop" type="line" color="primary" icon-pack="feather" icon="icon-chevron-down"></vs-button> -->
@@ -43,8 +35,8 @@
 
         <!-- TABLE ACTION COL-2: SEARCH & EXPORT AS CSV -->
         <div class="flex flex-wrap items-center justify-between ag-grid-table-actions-right">
-          <vs-input class="mb-4 md:mb-0 mr-4" v-model="searchQuery" @input="updateSearchQuery" placeholder="Search..." />
-          <vs-button class="mb-4 md:mb-0" @click="gridApi.exportDataAsCsv()">Export as CSV</vs-button>
+          <vs-input class="mb-4 md:mb-0 mr-4" v-model="searchQuery" @input="updateSearchQuery" placeholder="Pretraga..." />
+          <vs-button class="mb-4 md:mb-0" @click="gridApi.exportDataAsCsv()">Izvezi kao CSV</vs-button>
         </div>
       </div>
       <ag-grid-vue
@@ -53,7 +45,8 @@
         class="ag-theme-material w-100 my-4 ag-grid-table"
         :columnDefs="columnDefs"
         :defaultColDef="defaultColDef"
-        :rowData="contacts"
+        :rowData="products"
+        :localeText="localeText"
         rowSelection="multiple"
         colResizeDefault="shift"
         :animateRows="true"
@@ -74,10 +67,9 @@
 
 <script>
 import { AgGridVue } from 'ag-grid-vue'
-import contacts from './data.json'
-
+ 
 import '@sass/vuexy/extraComponents/agGridStyleOverride.scss'
-
+import {AG_GRID_LOCALE_EN} from './local';
 export default {
   components: {
     AgGridVue
@@ -88,6 +80,8 @@ export default {
       gridOptions: {},
       maxPageNumbers: 7,
       gridApi: null,
+      products:[],
+      localeText:{},
       defaultColDef: {
         sortable: true,
         editable: true,
@@ -96,75 +90,49 @@ export default {
       },
       columnDefs: [
         {
-          headerName: 'First Name',
-          field: 'firstname',
-          width: 175,
-          filter: true,
+          headerName: '#ID',
+          field: 'id',
+           filter: true,
           checkboxSelection: true,
           headerCheckboxSelectionFilteredOnly: true,
           headerCheckboxSelection: true
         },
         {
-          headerName: 'Last Name',
-          field: 'lastname',
-          filter: true,
-          width: 175
-        },
+          headerName: 'Naziv',
+          field: 'name',
+           filter: true,
+          },
         {
-          headerName: 'Email',
-          field: 'email',
+          headerName: 'Kratak opis',
+          field: 'shortdesc',
           filter: true,
-          width: 250,
-          pinned: 'left'
-        },
+         },
         {
-          headerName: 'Company',
-          field: 'company',
+          headerName: 'Datum dodavanja',
+          field: 'created_at',
           filter: true,
-          width: 250
+             
         },
-        {
-          headerName: 'City',
-          field: 'city',
-          filter: true,
-          width: 150
-        },
-        {
-          headerName: 'Country',
-          field: 'country',
-          filter: true,
-          width: 150
-        },
-        {
-          headerName: 'State',
-          field: 'state',
-          filter: true,
-          width: 125
-        },
-        {
-          headerName: 'Zip',
-          field: 'zip',
-          filter: true,
-          width: 125
-        },
-        {
-          headerName: 'Followers',
-          field: 'followers',
-          filter: 'agNumberColumnFilter',
-          width: 125
-        }
-      ],
-      contacts
+       
+      ]
+      
     }
   },
   watch: {
     '$store.state.windowWidth' (val) {
       if (val <= 576) {
         this.maxPageNumbers = 4
-        this.gridOptions.columnApi.setColumnPinned('email', null)
-      } else this.gridOptions.columnApi.setColumnPinned('email', 'left')
+        this.gridOptions.columnApi.setColumnPinned('id', null)
+      } else this.gridOptions.columnApi.setColumnPinned('id', 'left')
     }
   },
+  created () {
+    this.localeText=AG_GRID_LOCALE_EN
+     //  User Reward Card
+    this.$http.get('/api/auth/products')
+      .then((response) => { this.products=response.data.products })
+      .catch((error)   => { console.log(error) })
+},
   computed: {
     paginationPageSize () {
       if (this.gridApi) return this.gridApi.paginationGetPageSize()
