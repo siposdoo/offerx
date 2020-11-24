@@ -4,7 +4,7 @@ import router from '@/router'
 
 Vue.use(AclInstaller)
 
-let initialRole = 'editor'
+let initialRole = 'admin'
 
 const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 if (userInfo && userInfo.userRole) initialRole = userInfo.userRole

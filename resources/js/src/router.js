@@ -49,7 +49,16 @@ const router = new Router({
           name: 'dashboard-analytics',
           component: () => import('./views/DashboardAnalytics.vue'),
           meta: {
-            rule: 'admin',
+            rule: 'editor',
+            allowAnonymous: false
+          }
+        },
+        {
+          path: '/',
+          name: 'dashboard-analytics',
+          component: () => import('@/views/apps/user/user-list/UserList.vue'),
+          meta: {
+            rule: 'superadmin',
             allowAnonymous: false
           }
         },
@@ -63,7 +72,7 @@ const router = new Router({
               { title: 'Šopovi', active: true }
             ],
             pageTitle: 'Šopovi',
-            rule: 'admin'
+            rule: 'editor'
           }
         },
         {
@@ -76,7 +85,7 @@ const router = new Router({
               { title: 'Proizvodi', active: true }
             ],
             pageTitle: 'Proizvodi',
-            rule: 'admin'
+            rule: 'editor'
           }
         },
         {
