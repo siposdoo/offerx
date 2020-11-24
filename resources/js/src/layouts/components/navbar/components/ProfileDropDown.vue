@@ -3,9 +3,9 @@
 
     <div class="text-right leading-tight hidden sm:block">
       <p class="font-semibold">{{ activeUserInfo.displayName }}</p>
-      <small  v-if="activeUserInfo.userRole==='admin'">Dobavljač</small>
-      <small  v-if="activeUserInfo.userRole==='superadmin'">Superadmin</small>
-      <small  v-if="activeUserInfo.userRole==='editor'">Šop</small>
+      <small  v-if="activeUserInfo.userRole==='a2eed3a65bb08aeff6857224776185d8'">Dobavljač</small>
+      <small  v-if="activeUserInfo.userRole==='6be6eada56e0e523d15c30b23123d411'">Superadmin</small>
+      <small  v-if="activeUserInfo.userRole==='8122a36f88b8c47153a0db9fb1619d10'">Šop</small>
     </div>
 
     <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
