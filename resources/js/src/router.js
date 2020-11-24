@@ -1296,8 +1296,8 @@ const router = new Router({
           component: () => import('@/views/pages/login/Login.vue'),
           meta: {
             
-              allowAnonymous: true
-           ,
+             allowAnonymous: true
+           , 
             rule: 'editor'
           }
         },
@@ -1306,6 +1306,8 @@ const router = new Router({
           name: 'page-register',
           component: () => import('@/views/pages/register/Register.vue'),
           meta: {
+            allowAnonymous: true
+            , 
             rule: 'editor'
           }
         },
