@@ -319,10 +319,10 @@ export default {
 
             resolve(response)
               // Navigate User to homepage
-              if(response.data.userData.userRole==="editor"){
+              if(response.data.userData.userRole==="8122a36f88b8c47153a0db9fb1619d10"){
               router.push('/')
             }
-            else if(response.data.userData.userRole==="superadmin"){
+            else if(response.data.userData.userRole==="6be6eada56e0e523d15c30b23123d411"){
               router.push('/superadmin')
             }
             else{
