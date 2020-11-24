@@ -4,6 +4,7 @@
     <div class="text-right leading-tight hidden sm:block">
       <p class="font-semibold">{{ activeUserInfo.displayName }}</p>
       <small  v-if="activeUserInfo.userRole==='admin'">Dobavljač</small>
+      <small  v-if="activeUserInfo.userRole==='superadmin'">Superadmin</small>
       <small  v-if="activeUserInfo.userRole==='editor'">Šop</small>
     </div>
 
