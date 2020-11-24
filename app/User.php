@@ -19,7 +19,7 @@ protected $fillable = [
 * @var array
 */
 protected $hidden = [
-'password', 'remember_token',
+'password', 'remember_token','userRole',
 ];
 
 public function products()
