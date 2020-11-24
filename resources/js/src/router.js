@@ -54,8 +54,8 @@ const router = new Router({
           }
         },
         {
-          path: '/',
-          name: 'dashboard-analytics',
+          path: '/admin',
+          name: 'dashboard-analyticsa',
           component: () => import('./views/DashboardAnalytics.vue'),
           meta: {
             rule: 'superadmin',
