@@ -66,19 +66,21 @@ export default [
     icon: 'ListIcon',
     i18n: 'Proizvodi',
     name: 'Proizvodi',
+    
  
     items: [
       {
         url: '/proizvodi',
         name: 'Lista proizvoda',
-         
+        icon: 'ListIcon',
         tagColor: 'primary',
         i18n: 'Lista proizvoda',
       },
       {
-        url: '/ui-elements/data-list/thumb-view',
+        url: '/kategorije',
         name: 'Kategorije',
-        slug: 'data-list-thumb-view',
+        icon: 'ListIcon',
+        slug: 'kategorije',
         i18n: 'Kategorije'
       }
     ]

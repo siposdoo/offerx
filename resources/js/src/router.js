@@ -54,15 +54,6 @@ const router = new Router({
           }
         },
         {
-          path: '/superadmin',
-          name: 'dashboard-superadmin',
-          component: () => import('./views/DashboardAnalyticsSopovi.vue'),
-          meta: {
-            rule: 'superadmin',
-            allowAnonymous: false
-          }
-        }, 
-        {
           path: '/sopovi',
           name: 'app-user-list',
           component: () => import('@/views/apps/user/user-list/UserList.vue'),
@@ -72,7 +63,7 @@ const router = new Router({
               { title: 'Šopovi', active: true }
             ],
             pageTitle: 'Šopovi',
-            rule: 'editor'
+            rule: 'sop'
           }
         },
         {
@@ -85,7 +76,20 @@ const router = new Router({
               { title: 'Proizvodi', active: true }
             ],
             pageTitle: 'Proizvodi',
-            rule: 'editor'
+            rule: 'sop'
+          }
+        },
+        {
+          path: '/kategorije',
+          name: 'Kategorije',
+          component: () => import('@/views/pages/admin/Kategorije.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Početna', url: '/' },
+              { title: 'Kategorije', active: true }
+            ],
+            pageTitle: 'Kategorije',
+            rule: 'sop'
           }
         },
         {
@@ -98,7 +102,7 @@ const router = new Router({
               { title: 'Narudžbe', active: true }
             ],
             pageTitle: 'Narudžbe',
-            rule: 'admin'
+            rule: 'sop'
           }
         },
         {

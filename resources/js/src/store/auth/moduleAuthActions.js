@@ -320,16 +320,9 @@ export default {
 
             resolve(response)
               // Navigate User to homepage
-              if(response.data.userData.userRole=="8122a36f88b8c47153a0db9fb1619d10"){
+             
               router.replace('/')
-            }
-            if(response.data.userData.userRole=="6be6eada56e0e523d15c30b23123d411"){
-              router.replace('/superadmin')
-              
-            }
-            if(response.data.userData.userRole=="a2eed3a65bb08aeff6857224776185d8"){
-              router.replace('/dobavljac')
-            }
+            
           } else {
             reject({message: 'Pogresan email ili šifra'})
           }
