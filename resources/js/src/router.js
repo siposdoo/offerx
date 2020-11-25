@@ -1310,8 +1310,8 @@ const router = new Router({
           meta: {
             
              allowAnonymous: true
-           , 
-            rule: 'editor'
+            
+            
           }
         },
         {

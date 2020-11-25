@@ -4,7 +4,7 @@ import router from '@/router'
 
 Vue.use(AclInstaller)
 
-let initialRole = '8122a36f88b8c47153a0db9fb1619d101'
+let initialRole = '8122a36f88b8c47153a0db9fb1619d10'
 
 const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 if (userInfo && userInfo.userRole) initialRole = userInfo.userRole
