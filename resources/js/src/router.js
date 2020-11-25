@@ -1409,13 +1409,20 @@ router.afterEach(() => {
 
  
 router.beforeEach((to, from, next) => {
-   if (!to.meta.allowAnonymous && !isLoggedIn()) {
-    router.push({
+  if (to.name == '/pages/login' && isLoggedIn()) {
+    next({ path: '/' })
+}
+else if (to.name == '/pages/reset-password') {
+  next({ path: '/pages/reset-password' })
+}
+else if (!to.meta.allowAnonymous && !isLoggedIn()) {
+    next({
         path: '/pages/login',
       })
 }
 else {
     next()
 } 
+ 
 })
 export default router
