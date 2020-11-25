@@ -1418,7 +1418,7 @@ else if (!to.meta.allowAnonymous && !isLoggedIn()) {
       })
 }
 else {
-    next()
+  router.push({path:'/'})
 } 
 })
 export default router
