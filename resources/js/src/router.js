@@ -1414,6 +1414,8 @@ router.beforeEach((to, from, next) => {
         path: '/pages/login',
       })
 }
- 
+else {
+    next()
+} 
 })
 export default router
