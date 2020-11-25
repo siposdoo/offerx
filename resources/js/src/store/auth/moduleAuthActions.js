@@ -321,7 +321,7 @@ export default {
             resolve(response)
               // Navigate User to homepage
              
-              router.next(router.currentRoute.query.to || '/')
+              router.next()
             
           } else {
             reject({message: 'Pogresan email ili šifra'})
