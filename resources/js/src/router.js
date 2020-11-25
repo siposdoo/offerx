@@ -46,7 +46,7 @@ const router = new Router({
         
         {
           path: '/',
-          name: 'dashboard-analytics',
+          name: 'dashboard-shop',
           component: () => import('./views/DashboardAnalytics.vue'),
           meta: {
             rule: 'editor',
@@ -55,13 +55,13 @@ const router = new Router({
         },
         {
           path: '/superadmin',
-          name: 'dashboard-analytics',
-          component: () => import('./views/DashboardAnalytics.vue'),
+          name: 'dashboard-superadmin',
+          component: () => import('./views/DashboardAnalyticsSopovi.vue'),
           meta: {
             rule: 'superadmin',
             allowAnonymous: false
           }
-        },
+        }, 
         {
           path: '/sopovi',
           name: 'app-user-list',
@@ -1414,8 +1414,7 @@ else if (to.name == '/pages/reset-password') {
 else if (!to.meta.allowAnonymous && !isLoggedIn()) {
     next({
         path: '/pages/login',
-        query: { redirect: to.fullPath }
-    })
+      })
 }
 else {
     next()
