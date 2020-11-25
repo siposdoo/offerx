@@ -321,7 +321,7 @@ export default {
             resolve(response)
               // Navigate User to homepage
              
-              router.push('/').catch(error => console.error(error))
+              //router.push('/').catch(error => console.error(error))
             
           } else {
             reject({message: 'Pogresan email ili šifra'})
