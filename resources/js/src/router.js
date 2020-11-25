@@ -51,9 +51,6 @@ const router = new Router({
           meta: {
             rule: 'editor',
             allowAnonymous: false
-          },
-          beforeEnter: (to, from, next) => {
-            guard(to, from, next)
           }
         },
         {
@@ -1409,23 +1406,7 @@ router.afterEach(() => {
     appLoading.style.display = 'none'
   }
 })
-const guard = function (to, from, next) {
-  // check for valid auth token
-  const token = localStorage.getItem('accessToken')
-  axios.post('/api/auth/refresh', {tokn: token})
-    .then(function (response) {
-      if (response.status === 200) {
-        next()
-      }  
-    }).catch(function (error) {
-      if (error.response && error.response.status === 401) {
-        alert('access neautorizat')
-        next('/pages/login')
-        localStorage.removeItem('userInfo')
-        localStorage.removeItem('accessToken')
-      } 
-    })
-}
+ 
  
 router.beforeEach((to, from, next) => {
   if (to.name == '/pages/login' && isLoggedIn()) {
