@@ -1421,10 +1421,11 @@ const guard = function (to, from, next) {
       }  
     }).catch(function (error) {
       if (error.response && error.response.status === 401) {
-        alert('access neautorizat')
-        next('/pages/login')
+        //alert('access neautorizat')
+       
         localStorage.removeItem('userInfo')
         localStorage.removeItem('accessToken')
+        next('/pages/login')
       } 
     })
 }
