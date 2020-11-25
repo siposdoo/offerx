@@ -50,9 +50,20 @@ const router = new Router({
           component: () => import('./views/DashboardAnalytics.vue'),
           meta: {
             rule: 'editor',
+            allowAnonymous: true
+          }
+        },
+        {
+          path: '/prodaja',
+          name: 'prodaja',
+          component: () => import('./views/DashboardAnalytics.vue'),
+          meta: {
+            rule: 'sop',
             allowAnonymous: false
           }
         },
+           
+     
         {
           path: '/sopovi',
           name: 'app-user-list',
@@ -63,7 +74,7 @@ const router = new Router({
               { title: 'Šopovi', active: true }
             ],
             pageTitle: 'Šopovi',
-            rule: 'sop'
+            rule: 'superadminidobavljac'
           }
         },
         {
@@ -76,20 +87,20 @@ const router = new Router({
               { title: 'Proizvodi', active: true }
             ],
             pageTitle: 'Proizvodi',
-            rule: 'sop'
+            rule: 'editor'
           }
         },
         {
           path: '/kategorije',
           name: 'Kategorije',
-          component: () => import('@/views/pages/admin/Kategorije.vue'),
+          component: () => import('@/views/pages/admin/Proizvodi.vue'),
           meta: {
             breadcrumb: [
               { title: 'Početna', url: '/' },
               { title: 'Kategorije', active: true }
             ],
             pageTitle: 'Kategorije',
-            rule: 'sop'
+            rule: 'superadmin'
           }
         },
         {
@@ -102,7 +113,7 @@ const router = new Router({
               { title: 'Narudžbe', active: true }
             ],
             pageTitle: 'Narudžbe',
-            rule: 'sop'
+            rule: 'sopidobavljac'
           }
         },
         {
@@ -1321,7 +1332,7 @@ const router = new Router({
           meta: {
             allowAnonymous: true
             , 
-            rule: 'editor'
+            rule: 'public'
           }
         },
         {
@@ -1406,23 +1417,30 @@ router.afterEach(() => {
     appLoading.style.display = 'none'
   }
 })
- 
+
  
 router.beforeEach((to, from, next) => {
-  if (to.name == '/pages/login' && isLoggedIn()) {
-   next({ path: '/' })
-}
-else if (to.name == '/pages/reset-password') {
-  next({ path: '/pages/reset-password' })
-}
-else if (!to.meta.allowAnonymous && !isLoggedIn()) {
-    next({
-        path: '/pages/login',
-      })
+  /*
+   if (!to.meta.allowAnonymous && !isLoggedIn()) {
+  next({ path: '/pages/login', query: { to: to.path } })
 }
 else {
     next()
 } 
- 
+*/
+const publicPages = ['/pages/login', '/pages/register'];
+const authRequired = !publicPages.includes(to.path);
+if (authRequired && !isLoggedIn()) {
+  next('/pages/login');
+} else {
+  if(to.path=="/" && from.path=="/pages/login")
+  {
+
+  }
+  else{
+  next();
+  }
+}
+
 })
 export default router

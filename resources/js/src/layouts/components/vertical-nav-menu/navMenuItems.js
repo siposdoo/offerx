@@ -36,6 +36,12 @@ export default [
     
   },
   {
+    url:'/prodaja',
+    name: 'Prodaja',
+    icon: 'CoffeeIcon',
+    i18n: 'Prodaja',
+  },
+  {
     header: 'Apps',
     icon: 'PackageIcon',
     i18n: ' ',

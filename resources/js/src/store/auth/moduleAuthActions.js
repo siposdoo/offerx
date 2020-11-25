@@ -299,7 +299,7 @@ export default {
 
 
   // JWT
-  loginJWT ({ commit }, payload) {
+  async loginJWT ({ commit }, payload) {
 
     return new Promise((resolve, reject) => {
       jwt.login(payload.userDetails.email, payload.userDetails.password)
@@ -308,20 +308,28 @@ export default {
           // If there's user data in response
           if (response.data.userData) {
           
-
+           
+            let tok=response.data.userData.userRole
+            let tok1=response.data
             // Set accessToken
             localStorage.setItem('accessToken', response.data.accessToken)
 
             // Update user details
-            commit('UPDATE_USER_INFO', response.data.userData, {root: true})
+         commit('UPDATE_USER_INFO', response.data.userData, {root: true})
 
             // Set bearer token in axios
             commit('SET_BEARER', response.data.accessToken)
 
-            resolve(response)
               // Navigate User to homepage
+              
+ 
              
-             // router.push('/')
+               
+        
+              jwt.refreshToken().then(response => { resolve(response) })
+              window.location.href = "/"
+
+            return true
             
           } else {
             reject({message: 'Pogresan email ili šifra'})
@@ -345,13 +353,9 @@ export default {
       jwt.registerUser(displayName, email, password)
         .then(response => {
           // Redirect User
-          router.push(router.currentRoute.query.to || '/')
+          router.push('/pages/login')
 
-          // Update data in localStorage
-          localStorage.setItem('accessToken', response.data.accessToken)
-          commit('UPDATE_USER_INFO', response.data.userData, {root: true})
-
-          resolve(response)
+          
         })
         .catch(error => { reject(error) })
     })

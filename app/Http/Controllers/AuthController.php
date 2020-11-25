@@ -40,6 +40,7 @@ return response()->json(['user' => $user]);
 public function login()
 {
 $credentials = request(['email', 'password']);
+ 
 if (! $token = auth('api')->attempt($credentials)) {
 //return response()->json(['error' => 'Unauthorized']);
 return response()->json(['error' => 'Unauthorized']);
@@ -73,6 +74,7 @@ return response()->json(['message' => 'Successfully logged out']);
 */
 public function refresh()
 {
+    
 return $this->respondWithToken(auth('api')->refresh());
 }
 /**

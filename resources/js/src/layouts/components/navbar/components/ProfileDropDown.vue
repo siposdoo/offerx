@@ -86,6 +86,8 @@ export default {
       
       // If JWT login
       if (localStorage.getItem('accessToken')) {
+         this.$acl.change('8144a36f88b8c47153a0db9fb1619d101')
+      localStorage.removeItem('userInfo')
         localStorage.removeItem('accessToken')
         this.$router.push('/pages/login').catch(() => {})
       }

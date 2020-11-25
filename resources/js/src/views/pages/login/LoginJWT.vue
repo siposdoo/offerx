@@ -32,6 +32,10 @@
     <div class="flex flex-wrap justify-between mb-3">
       
       <vs-button :disabled="!validateForm" @click="loginJWT">Prijava</vs-button>
+       <router-link   to="/" class="vx-logo cursor-pointer mx-auto flex items-center">
+        
+        <span class="vx-logo-text text-primary">OFFER-X</span>
+      </router-link>
     </div>
   </div>
 </template>
@@ -57,7 +61,7 @@ export default {
 
         // Close animation if passed as payload
         // this.$vs.loading.close()
- this.$router.push('/').catch(() => {})
+
 
         this.$vs.notify({
           title: 'Pokušaj prijave',
@@ -66,7 +70,7 @@ export default {
           icon: 'icon-alert-circle',
           color: 'warning'
         })
- this.$router.push('/').catch(() => {})
+  this.$router.push('/').catch(() => {})
         return false
       }
       return true
@@ -85,9 +89,14 @@ export default {
           password: this.password
         }
       }
-this.$vs.loading.close()
+
       this.$store.dispatch('auth/loginJWT', payload)
-        .then(() => { this.$vs.loading.close() })
+        .then(() => { 
+          this.$vs.loading.close()
+              this.$router.push('/narudzbe')
+              return false
+          
+           })
         .catch(error => {
           this.$vs.loading.close()
           this.$vs.notify({
@@ -98,6 +107,7 @@ this.$vs.loading.close()
             color: 'danger'
           })
         })
+        
     },
     registerUser () {
       if (!this.checkLogin()) return
