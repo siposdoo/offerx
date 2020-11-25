@@ -19,8 +19,6 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import axios from './axios.js'
-
 import { isLoggedIn } from './auth/authService'
 
  
@@ -53,6 +51,9 @@ const router = new Router({
           meta: {
             rule: 'editor',
             allowAnonymous: false
+          },
+          beforeEnter: (to, from, next) => {
+            guard(to, from, next)
           }
         },
         {
@@ -1408,27 +1409,39 @@ router.afterEach(() => {
     appLoading.style.display = 'none'
   }
 })
- 
+const guard = function (to, from, next) {
+  // check for valid auth token
+  const token = localStorage.getItem('accessToken')
+  axios.post('/api/auth/refresh', {tokn: token})
+    .then(function (response) {
+      if (response.status === 200) {
+        next()
+      }  
+    }).catch(function (error) {
+      if (error.response && error.response.status === 401) {
+        alert('access neautorizat')
+        next('/pages/login')
+        localStorage.removeItem('userInfo')
+        localStorage.removeItem('accessToken')
+      } 
+    })
+}
  
 router.beforeEach((to, from, next) => {
-  const publicPages = [
-    '/pages/login', 
-    '/pages/register', 
-    '/pages/forgot-password', 
-    '/pages/comingsoon', 
-    '/pages/error-404', 
-    '/pages/error-500', 
-    '/pages/not-authorized', 
-    '/pages/maintenance', 
-    '/callback'
-  ]
-  const authRequired = !publicPages.includes(to.path)
-   
-
-  if (authRequired && !isLoggedIn) {
-    return next('/pages/login')
-  }
-  return next()
+  if (to.name == '/pages/login' && isLoggedIn()) {
+  //  next({ path: '/' })
+}
+else if (to.name == '/pages/reset-password') {
+  next({ path: '/pages/reset-password' })
+}
+else if (!to.meta.allowAnonymous && !isLoggedIn()) {
+    next({
+        path: '/pages/login',
+      })
+}
+else {
+    next()
+} 
  
 })
 export default router
