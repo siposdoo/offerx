@@ -320,13 +320,8 @@ export default {
 
             resolve(response)
               // Navigate User to homepage
-              try {
-
-                  router.push(router.currentRoute.query.to || '/')
-              } catch {
-              
-              }
-              
+             
+              router.push('/').catch(error => console.error(error))
             
           } else {
             reject({message: 'Pogresan email ili šifra'})
