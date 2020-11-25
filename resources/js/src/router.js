@@ -1405,10 +1405,7 @@ router.afterEach(() => {
 
  
 router.beforeEach((to, from, next) => {
-  if (to.name == '/pages/login' && isLoggedIn()) {
-    next({ path: '/' })
-}
-else if (to.name == '/pages/reset-password') {
+   if (to.name == '/pages/reset-password') {
   next({ path: '/pages/reset-password' })
 }
 else if (!to.meta.allowAnonymous && !isLoggedIn()) {
