@@ -321,7 +321,7 @@ export default {
             resolve(response)
               // Navigate User to homepage
              
-              router.replace('/')
+              router.push(router.currentRoute.query.to || '/')
             
           } else {
             reject({message: 'Pogresan email ili šifra'})
