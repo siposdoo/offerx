@@ -1410,7 +1410,7 @@ router.afterEach(() => {
  
 router.beforeEach((to, from, next) => {
   if (to.name == '/pages/login' && isLoggedIn()) {
-  //  next({ path: '/' })
+   next({ path: '/' })
 }
 else if (to.name == '/pages/reset-password') {
   next({ path: '/pages/reset-password' })
