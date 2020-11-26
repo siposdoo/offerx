@@ -42,7 +42,7 @@
       </div>
        
              
-            <vs-popup fullscreen title="fullscreen" :active.sync="popupActive">
+            <vs-popup fullscreen title="Novi proizvod" :active.sync="popupActive">
                
                    <vx-card title="Default" code-toggler>
 
@@ -53,24 +53,10 @@
         </vs-alert>
 
         <div class="mt-5">
-            <vs-upload limit="1" action="/api/auth/image/"   fileName="photo" @on-success="successUpload" />
+            <vs-upload limit="1" show-upload-button="false" action="/api/auth/image/"  text="Dodaj sliku proizvoda" fileName="photo" @on-success="successUpload" />
         </div>
 
-        <template slot="codeContainer">
-&lt;template&gt;
-  &lt;vs-upload action=&quot;https://jsonplaceholder.typicode.com/posts/&quot; @on-success=&quot;successUpload&quot; /&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default {
-  methods:{
-    successUpload(){
-      this.$vs.notify({color:'success',title:'Upload Success',text:'Lorem ipsum dolor sit amet, consectetur'})
-    }
-  }
-}
-&lt;/script&gt;
-        </template>
+    
 
     </vx-card>
                  </vs-popup>
@@ -191,8 +177,7 @@ export default {
   },
   methods: {
     successUpload (event) {
-      console.log(event)
-      this.$vs.notify({ color: 'success', title: 'Upload Success', text: 'Lorem ipsum dolor sit amet, consectetur' })
+       this.$vs.notify({ color: 'success', title: 'Upload Success', text: 'Lorem ipsum dolor sit amet, consectetur' })
     },
     updateSearchQuery (val) {
       this.gridApi.setQuickFilter(val)

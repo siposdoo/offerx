@@ -19,7 +19,7 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import { isLoggedIn } from './auth/authService'
+import { isLoggedIn} from './auth/authService'
 
  
 
@@ -1420,7 +1420,9 @@ router.afterEach(() => {
 
  
 router.beforeEach((to, from, next) => {
-  /*
+   
+ 
+   /*
    if (!to.meta.allowAnonymous && !isLoggedIn()) {
   next({ path: '/pages/login', query: { to: to.path } })
 }

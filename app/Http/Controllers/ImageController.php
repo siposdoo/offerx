@@ -103,8 +103,9 @@ class ImageController extends Controller
 
      
         $type = $this->getType($ext);
+         
 
-        if (Storage::putFileAs('/public/images/' . $this->getUserDir() . '/' . $type . '', $file, 'rand_image' . '.' . $ext)) {
+        if (Storage::putFileAs('/public/users/' . $this->getUserDir() . '/' . $type . '', $file, 'rand_image' . '.' . $ext)) {
             return response()->json([
         
                 'photoData' => json_encode($file),
