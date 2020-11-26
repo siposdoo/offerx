@@ -36,9 +36,45 @@
         <!-- TABLE ACTION COL-2: SEARCH & EXPORT AS CSV -->
         <div class="flex flex-wrap items-center justify-between ag-grid-table-actions-right">
           <vs-input class="mb-4 md:mb-0 mr-4" v-model="searchQuery" @input="updateSearchQuery" placeholder="Pretraga..." />
-          <vs-button class="mb-4 md:mb-0" @click="gridApi.exportDataAsCsv()">Izvezi kao CSV</vs-button>
+          <vs-button class="mb-4 md:mb-0 mr-4" @click="gridApi.exportDataAsCsv()">Izvezi kao CSV</vs-button>
+          <vs-button class="mb-4 md:mb-0 bg-danger"  @click="popupActive=true">Dodaj proizvod</vs-button>
         </div>
       </div>
+       
+             
+            <vs-popup fullscreen title="fullscreen" :active.sync="popupActive">
+               
+                   <vx-card title="Default" code-toggler>
+
+        <p>You can upload files to the server with the <code>vs-upload</code> component, the requested parameter is <code>action</code> which is the URL of the server</p>
+
+        <vs-alert color="primary" icon="new_releases" active="true" class="mt-5">
+            <p>For the title of each tab the <code>vs-label</code> property is implemented in the <code>vs-tab</code> component</p>
+        </vs-alert>
+
+        <div class="mt-5">
+            <vs-upload limit="1" action="/api/auth/image/"   fileName="photo" @on-success="successUpload" />
+        </div>
+
+        <template slot="codeContainer">
+&lt;template&gt;
+  &lt;vs-upload action=&quot;https://jsonplaceholder.typicode.com/posts/&quot; @on-success=&quot;successUpload&quot; /&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  methods:{
+    successUpload(){
+      this.$vs.notify({color:'success',title:'Upload Success',text:'Lorem ipsum dolor sit amet, consectetur'})
+    }
+  }
+}
+&lt;/script&gt;
+        </template>
+
+    </vx-card>
+                 </vs-popup>
+       
       <ag-grid-vue
         ref="agGridTable"
         :gridOptions="gridOptions"
@@ -76,6 +112,7 @@ export default {
   },
   data () {
     return {
+      popupActive:false,
       searchQuery: '',
       gridOptions: {},
       maxPageNumbers: 7,
@@ -153,6 +190,10 @@ export default {
     }
   },
   methods: {
+    successUpload (event) {
+      console.log(event)
+      this.$vs.notify({ color: 'success', title: 'Upload Success', text: 'Lorem ipsum dolor sit amet, consectetur' })
+    },
     updateSearchQuery (val) {
       this.gridApi.setQuickFilter(val)
     }

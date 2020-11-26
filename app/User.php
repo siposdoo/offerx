@@ -26,6 +26,7 @@ public function products()
 {
     return $this->hasMany('App\Models\Product');
 }
+ 
 
 /**
 * Get the identifier that will be stored in the subject claim of the JWT.
