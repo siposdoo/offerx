@@ -19,7 +19,7 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import { isLoggedIn} from './auth/authService'
+import { isLoggedIn,getAuthToken} from './auth/authService'
 
  
 
@@ -1437,6 +1437,7 @@ const authRequired = !publicPages.includes(to.path);
 if (authRequired && !isLoggedIn()) {
   next('/pages/login');
 } else {
+  alert(getAuthToken())
   if(to.path=="/" && from.path=="/pages/login")
   {
 
