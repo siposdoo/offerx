@@ -1322,9 +1322,10 @@ const router = new Router({
           component: () => import('@/views/pages/login/Login.vue'),
           meta: {
             
-             allowAnonymous: true
-           , 
-            rule: 'public'
+             allowAnonymous: true,
+             rule:'public'
+            
+            
           }
         },
         {
@@ -1334,7 +1335,7 @@ const router = new Router({
           meta: {
             allowAnonymous: true
             , 
-            rule: 'public'
+            rule: 'superadmin'
           }
         },
         {
@@ -1439,7 +1440,7 @@ if (authRequired && !isLoggedIn()) {
 } else {
   if(to.path=="/" && from.path=="/pages/login")
   {
-
+    next();
   }
   else{
   next();
