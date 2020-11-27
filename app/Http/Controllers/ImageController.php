@@ -95,7 +95,15 @@ class ImageController extends Controller
             return 'document';
         }
     }
-
+   public function deleteImage(Request $request){
+    Storage::delete($request['putanja']);
+    return response()->json([
+         
+        'putanja' => $request['putanja'],
+        'action' => 'deleted'
+         
+        ]);
+   }
     public function store(Request $request)
     {
         $file = $request->file('photo');
@@ -103,16 +111,15 @@ class ImageController extends Controller
 
      
         $type = $this->getType($ext);
-         
-
-        if (Storage::putFileAs('/public/users/' . $this->getUserDir() . '/' . $type . '', $file, 'rand_image' . '.' . $ext)) {
-            return response()->json([
-        
-                'photoData' => json_encode($file),
-                'ext' => $ext,
-                'token_type' => 'bearer',
-                'expires_in' => auth('api')->factory()->getTTL() * 60
-                ]);
+         $namef=md5(rand(1000,2000).'unavi'.rand(3000,5000));
+        $user=auth()->user();
+          
+$putanja='/public/users/dobavljac/'.md5($user->displayName.$user->id).'/'.$namef. '.' . $ext;
+  
+        if (Storage::putFileAs('/public/users/dobavljac/'.md5($user->displayName.$user->id).'/', $file, $namef. '.' . $ext)) {
+            return  $putanja;
+                 
+               
         }
 
         return response()->json(false);

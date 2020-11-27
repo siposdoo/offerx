@@ -326,7 +326,7 @@ export default {
              
                
         
-              jwt.refreshToken().then(response => { resolve(response) })
+             // jwt.refreshToken().then(response => { resolve(response) })
               window.location.href = "/"
 
             return true

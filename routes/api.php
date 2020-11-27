@@ -21,8 +21,10 @@ Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('register', 'AuthController@register');
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
-    Route::post('image', 'ImageController@store');
+    Route::post('image', 'ImageController@store')->middleware('auth:api');
+    Route::post('deleteimage', 'ImageController@deleteImage')->middleware('auth:api');
+    
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-    Route::get('products', 'ProductController@index');
+    Route::get('products', 'ProductController@index')->middleware('auth:api');
     });

@@ -54,19 +54,21 @@ const router = new Router({
           }
         },
         {
-          path: '/prodaja',
-          name: 'prodaja',
-          component: () => import('./views/DashboardAnalytics.vue'),
+          path: '/dobavljaci',
+          name: 'app-',
+          component: () => import('@/views/pages/Dobavljaci.vue'),
           meta: {
-            rule: 'sop',
-            allowAnonymous: false
+            breadcrumb: [
+              { title: 'Početna', url: '/' },
+              { title: 'Dobavljači', active: true }
+            ],
+            pageTitle: 'Dobavljači',
+            rule: 'editor'
           }
         },
-           
-     
         {
           path: '/sopovi',
-          name: 'app-user-list',
+          name: 'app-sopovi',
           component: () => import('@/views/apps/user/user-list/UserList.vue'),
           meta: {
             breadcrumb: [
@@ -74,7 +76,7 @@ const router = new Router({
               { title: 'Šopovi', active: true }
             ],
             pageTitle: 'Šopovi',
-            rule: 'superadminidobavljac'
+            rule: 'editor'
           }
         },
         {
