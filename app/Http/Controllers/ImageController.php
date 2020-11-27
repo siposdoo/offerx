@@ -118,7 +118,6 @@ $putanja='/public/users/dobavljac/'.md5($user->displayName.$user->id).'/'.$namef
   
         if (Storage::putFileAs('/public/users/dobavljac/'.md5($user->displayName.$user->id).'/', $file, $namef. '.' . $ext)) {
             return  $putanja;
-                 
                
         }
 
