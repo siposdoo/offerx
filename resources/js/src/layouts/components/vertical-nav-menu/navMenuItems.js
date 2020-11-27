@@ -19,7 +19,7 @@ export default [
   {
     header: 'Apps',
     icon: 'PackageIcon',
-    i18n: ' ',
+    i18n: '_',
     items: [
       
       {
@@ -71,10 +71,10 @@ export default [
     items: [
       {
         url: '/proizvodi',
-        name: 'Lista proizvoda',
+        name: 'ListaProizvoda',
         icon: 'ListIcon',
         tagColor: 'primary',
-        i18n: 'Lista proizvoda',
+        i18n: 'ListaProizvoda',
       },
       {
         url: '/kategorije',

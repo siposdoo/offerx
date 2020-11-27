@@ -1437,7 +1437,6 @@ const authRequired = !publicPages.includes(to.path);
 if (authRequired && !isLoggedIn()) {
   next('/pages/login');
 } else {
-  alert(getAuthToken())
   if(to.path=="/" && from.path=="/pages/login")
   {
 

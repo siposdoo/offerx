@@ -1,7 +1,15 @@
 // en, de, fr, pt
 export default {
   en: {
-    Dashboard: 'Dashboard',
+    Početna: 'Početna',
+    Dobavljači: 'Dobavljači',
+    Šopovi: 'Šopovi',
+    Narudžbe: 'Narudžbe',
+    Proizvodi: 'Proizvodi',
+    Reklamacije: 'Reklamacije',
+    Kategorije: 'Kategorije',
+    ListaProizvoda: 'Lista proizvoda',
+    _: ' ',
     eCommerce: 'eCommerce',
     Apps: 'Apps',
     Todo: 'Todo',
