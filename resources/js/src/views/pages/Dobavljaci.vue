@@ -86,6 +86,9 @@
           </div>
           </form>
         </tab-content>
+         <template slot="custom-buttons-left" >
+     <vs-button class="mb-4 md:mb-0 bg-danger"  v-if="popupActive" @click="popupActive=false">Odustani</vs-button>
+      </template>
       </form-wizard>
      
     
@@ -126,8 +129,7 @@
           <vs-input class="mb-4 md:mb-0 mr-4" v-model="searchQuery" @input="updateSearchQuery" placeholder="Pretraga..." />
           <vs-button class="mb-4 md:mb-0 mr-4" @click="gridApi.exportDataAsCsv()">Izvezi kao CSV</vs-button>
           <vs-button class="mb-4 md:mb-0 bg-warning"  v-if="!popupActive" @click="popupActive=true">Dodaj dobavljača</vs-button>
-           <vs-button class="mb-4 md:mb-0 bg-danger"  v-if="popupActive" @click="popupActive=falss">Odustani</vs-button>
-
+      
         </div>
       </div>
        
