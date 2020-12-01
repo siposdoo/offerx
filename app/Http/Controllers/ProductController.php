@@ -62,7 +62,7 @@ foreach($request['images'] as $img){
  //var_dump($request['product']);
       //  $data = $request['product'] ;
 
-         return response()->json(['success'=>'Uspjesno ste dodali artikal.','product' => $request['product']]);
+         return response()->json(['success'=>'1','product' => $request['product']]);
 
     }
 

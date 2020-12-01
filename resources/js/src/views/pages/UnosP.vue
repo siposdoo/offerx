@@ -2,7 +2,7 @@
 
 <template>
   <div id="ag-grid-demo">
-       <vx-card  :title="dataform.rand + 'Novi unos'"  class="mycard" v-if="popupActive">
+       <vx-card  :title=" 'Novi unos'"  class="mycard" v-if="popupActive">
                
                        
       <form-wizard 
@@ -605,7 +605,9 @@ Validator.localize('ba', dict)
              this.$http.post('/api/auth/addproduct',this.dataform, { headers:{
       'Authorization':"Bearer" + localStorage.getItem('accessToken')
     }}).then(function (response) {
-                  console.log(response)
+                  if(response.data.success=="1"){
+                    location.reload()
+                  }
 
        })
              resolve(true)
