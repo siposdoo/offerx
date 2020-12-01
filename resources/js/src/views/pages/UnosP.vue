@@ -95,7 +95,7 @@
   <span class="text-danger">{{ errors.first('step-1.videoproizvoda') }}</span>
             </div>
             <div class="vx-col md:w-1/1 w-full mt-5">
-                      <vs-input label="ink proizvodjača" size="large" v-validate="'url:require_protocol'" data-vv-as="field"   name="linkproizvodjaca" v-model="dataform.linkproizvodjaca" class="mt-5 w-full" />
+                      <vs-input label="Link proizvodjača" size="large" v-validate="'url:require_protocol'" data-vv-as="field"   name="linkproizvodjaca" v-model="dataform.linkproizvodjaca" class="mt-5 w-full" />
 
                <span class="text-danger">{{ errors.first('step-1.linkproizvodjaca') }}</span>
             </div>

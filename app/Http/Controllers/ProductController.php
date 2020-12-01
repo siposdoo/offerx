@@ -46,6 +46,26 @@ class ProductController extends Controller
 $data['kategorija']=1;
 $data['subkategorija']=1;
 $data['proizvodjac']=1;
+if(!$data['sifradobavljaca']){
+    $data['sifradobavljaca']='nema unosa';
+}
+if(!$data['opis']){
+    $data['opis']='nema unosa';
+}
+if(!$data['tehnckekar']){
+    $data['tehnckekar']='nema unosa';
+}
+if(!$data['videoproizvoda']){
+    $data['videoproizvoda']='nema unosa';
+}
+if(!$data['predlozenimreze']){
+    $data['predlozenimreze']='nema unosa';
+}
+if(!$data['linkproizvodjaca']){
+    $data['linkproizvodjaca']='nema unosa';
+}
+
+
 $product->fill($data)->save();
 
 foreach($request['images'] as $img){
