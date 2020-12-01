@@ -476,7 +476,12 @@ Validator.localize('ba', dict)
           checkboxSelection: true,
           headerCheckboxSelectionFilteredOnly: true,
           headerCheckboxSelection: true
-        },
+        }, {
+          headerName: 'IDA',
+          field: 'ida',
+           filter: true,
+          },
+        
         {
           headerName: 'Naziv',
           field: 'naslovweb',
