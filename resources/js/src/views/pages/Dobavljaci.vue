@@ -60,28 +60,13 @@
         <tab-content title="Step 3" class="mb-5" icon="feather icon-image" :before-change="validateStep3">
           <form data-vv-scope="step-3">
           <div class="vx-row">
-            <div class="vx-col md:w-1/2 w-full">
-              <vs-input label="Event Name" v-model="eventName" class="w-full mt-5" name="event_name" v-validate="'required|alpha_spaces'" />
-              <span class="text-danger">{{ errors.first('step-3.event_name') }}</span>
-            </div>
-            <div class="vx-col md:w-1/2 w-full">
-              <vs-select v-model="city" class="w-full select-large mt-5" label="Event Location">
-                <vs-select-item :key="index" :value="item.value" :text="item.text" v-for="(item,index) in cityOptions" class="w-full" />
-              </vs-select>
-            </div>
-            <div class="vx-col md:w-1/2 w-full mt-5">
-              <vs-select v-model="status" class="w-full select-large" label="Event Status">
-                <vs-select-item :key="index" :value="item.value" :text="item.text" v-for="(item,index) in statusOptions" class="w-full" />
-              </vs-select>
-            </div>
-            <div class="vx-col md:w-1/2 w-full md:mt-8">
-              <div class="demo-alignment">
-                <span>Requirements:</span>
-                <div class="flex">
-                  <vs-checkbox>Staffing</vs-checkbox>
-                  <vs-checkbox>Catering</vs-checkbox>
-                </div>
-              </div>
+            <div class="vx-col md:w-1/1 w-full">
+               <div id="editor">
+  <p>Hello World!</p>
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
+</div>
+               
             </div>
           </div>
           </form>
@@ -171,6 +156,11 @@ import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
 // For custom error message
 import { Validator } from 'vee-validate'
+
+ var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
 const dict = {
   custom: {
     first_name: {

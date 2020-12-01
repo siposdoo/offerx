@@ -96,33 +96,25 @@ class ImageController extends Controller
         }
     }
    public function deleteImage(Request $request){
-    Storage::delete($request['putanja']);
-    return response()->json([
-         
-        'putanja' => $request['putanja'],
-        'action' => 'deleted'
-         
-        ]);
+    $user = Auth::user();
+
+        
+   unlink(public_path('images/'.md5($user->id).'/'.$request['randPath'].'/'.md5($request['type']).'/'.$request['filen']));
+   return response()->json(['success'=>'Uspjesno ste obrisali sliku.','path'=>'images/'.md5($user->id).'/'.$request['randPath'].'/'.md5($request['type']).'/'.$request['filen'],'type' => $request['type']]);
+
    }
     public function store(Request $request)
     {
-        $file = $request->file('photo');
-        $ext = $file->getClientOriginalExtension();
+        
+$imageName = $request->file->getClientOriginalName();
+$randPath = $request['randPath'];
+$type = $request['type'];
+$user = Auth::user();
 
-     
-        $type = $this->getType($ext);
-         $namef=md5(rand(1000,2000).'unavi'.rand(3000,5000));
-        $user=auth()->user();
+$path= 'images/'.md5($user->id).'/'.$randPath.'/'.md5($type).'/'.$imageName;
+        $request->file->move(public_path('images/'.md5($user->id).'/'.$randPath.'/'.md5($type).'/'), $imageName);
           
-$putanja='/public/users/dobavljac/'.md5($user->displayName.$user->id).'/'.$namef. '.' . $ext;
-  
-        if (Storage::putFileAs('/public/users/dobavljac/'.md5($user->displayName.$user->id).'/', $file, $namef. '.' . $ext)) {
-            return  $putanja;
-               
-        }
-
-        return response()->json(false);
-
+        return response()->json(['success'=>'Uspjesno ste dodali sliku.','path'=>$path,'randPath' => $randPath,'type' => $type]);
         
     }
 

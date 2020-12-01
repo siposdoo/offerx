@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use App\Picture;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class PictureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return response()->json([
-           
-            'products' => Product::All()
-            
-            ]);
+        //
     }
 
     /**
@@ -40,39 +35,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-
- $data = $request->only($product->getFillable());
-$data['kategorija']=1;
-$data['subkategorija']=1;
-$data['proizvodjac']=1;
-$product->fill($data)->save();
-
-foreach($request['images'] as $img){
-    $image = new Picture();
-
-    $image->product_id=$product->id;
-    $image->type=$img['type'];
-    $image->urlImage=$img['path'];
-    $image->save();
-
-}
-
-
- //var_dump($request['product']);
-      //  $data = $request['product'] ;
-
-         return response()->json(['success'=>'Uspjesno ste dodali artikal.','product' => $request['product']]);
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Picture  $picture
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Picture $picture)
     {
         //
     }
@@ -80,10 +52,10 @@ foreach($request['images'] as $img){
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Picture  $picture
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Picture $picture)
     {
         //
     }
@@ -92,10 +64,10 @@ foreach($request['images'] as $img){
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Picture  $picture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Picture $picture)
     {
         //
     }
@@ -103,10 +75,10 @@ foreach($request['images'] as $img){
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Picture  $picture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Picture $picture)
     {
         //
     }

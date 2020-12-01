@@ -67,6 +67,20 @@ const router = new Router({
           }
         },
         {
+          path: '/unosproizvoda',
+          name: 'app-unosp',
+          component: () => import('@/views/pages/UnosP.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Početna', url: '/' },
+              { title: 'Proizvodi', active: true }
+            ],
+            pageTitle: 'Proizvodi',
+            rule: 'unosproizvoda'
+          }
+        },
+        
+        {
           path: '/sopovi',
           name: 'app-sopovi',
           component: () => import('@/views/apps/user/user-list/UserList.vue'),
