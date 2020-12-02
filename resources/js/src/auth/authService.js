@@ -48,18 +48,6 @@ function getTokenExpirationDate(encodedToken) {
 }
   
 function isTokenExpired(token) {
-   
     let expirationDate = getTokenExpirationDate(token)
-    if(expirationDate < new Date())
-    {
-        localStorage.removeItem('accessToken')
-        localStorage.removeItem('userInfo')
-
-        return true
-    }
-    else{
-
-        return false
-    }
-    
+    return expirationDate < new Date()
 }

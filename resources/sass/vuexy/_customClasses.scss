@@ -11,39 +11,7 @@
 // ======================================================================================
 // BUTTON
 // ======================================================================================
-.con-upload {
-  width: 80% !important;
-  position: relative;
-  }
-.wiztitle{
-  background-color: rgba(223, 225, 228, 0.73);
-  margin-bottom: 1.25rem;
-  padding: 8px;
-}
-.mycard{
-  .vx-card__actions {
-    svg {
-    transition: all 0.25s ease-out !important;
-    height: 1.5rem !important;
-    width: 1.5rem !important;
-    color: white !important;
-    }
-  }
-  .vx-card__header{
-    padding: 1.5rem 1.5rem !important;
-  }
-   .vx-card__header {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: rgba(var(--vs-primary), 1) !important;
-      h4{
-       color: #fff;
-     }
 
-    }
-}
 .btn-group {
   button {
     padding: 1rem 1.25rem !important;

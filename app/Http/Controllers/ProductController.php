@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\Picture;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -40,50 +39,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-
- $data = $request->only($product->getFillable());
-$data['kategorija']=1;
-$data['subkategorija']=1;
-$data['proizvodjac']=1;
-if(!$data['sifradobavljaca']){
-    $data['sifradobavljaca']='nema unosa';
-}
-if(!$data['opis']){
-    $data['opis']='nema unosa';
-}
-if(!$data['tehnckekar']){
-    $data['tehnckekar']='nema unosa';
-}
-if(!$data['videoproizvoda']){
-    $data['videoproizvoda']='nema unosa';
-}
-if(!$data['predlozenimreze']){
-    $data['predlozenimreze']='nema unosa';
-}
-if(!$data['linkproizvodjaca']){
-    $data['linkproizvodjaca']='nema unosa';
-}
-
-
-$product->fill($data)->save();
-
-foreach($request['images'] as $img){
-    $image = new Picture();
-
-    $image->product_id=$product->id;
-    $image->type=$img['type'];
-    $image->urlImage=$img['path'];
-    $image->save();
-
-}
-
-
- //var_dump($request['product']);
-      //  $data = $request['product'] ;
-
-         return response()->json(['success'=>'1','product' => $request['product']]);
-
+        //
     }
 
     /**

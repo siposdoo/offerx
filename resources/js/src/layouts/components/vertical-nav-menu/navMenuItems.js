@@ -34,15 +34,6 @@ export default [
       {
          
        
-        url: '/unosproizvoda',
-        name: 'Unos proizvoda',
-        icon: 'ShoppingBagIcon',
-        i18n: 'Unos proizvoda(beta)',
-        
-      },
-      {
-         
-       
         url: '/sopovi',
         name: 'Sopovi',
         icon: 'ShoppingCartIcon',
