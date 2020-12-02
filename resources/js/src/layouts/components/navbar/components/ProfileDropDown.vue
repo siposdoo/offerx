@@ -17,7 +17,7 @@
       <vs-dropdown-menu class="vx-navbar-dropdown">
         <ul style="min-width: 9rem">
 
-          <li
+          <!--li
             class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
             @click="$router.push('/pages/profile').catch(() => {})">
             <feather-icon icon="UserIcon" svgClasses="w-4 h-4" />
@@ -50,7 +50,7 @@
             @click="$router.push('/apps/eCommerce/wish-list').catch(() => {})">
             <feather-icon icon="HeartIcon" svgClasses="w-4 h-4" />
             <span class="ml-2">Wish List</span>
-          </li>
+          </li-->
 
           <vs-divider class="m-1" />
 

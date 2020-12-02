@@ -67,6 +67,33 @@ const router = new Router({
           }
         },
         {
+          path: '/unosproizvoda2',
+          name: 'app-unosp',
+          component: () => import('@/views/pages/UnosP2.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Početna', url: '/' },
+              { title: 'Proizvodi', active: true }
+            ],
+            pageTitle: 'Proizvodi',
+            rule: 'unosproizvoda'
+          }
+        },
+        {
+          path: '/unosproizvoda',
+          name: 'app-unosp',
+          component: () => import('@/views/pages/UnosP.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Početna', url: '/' },
+              { title: 'Proizvodi', active: true }
+            ],
+            pageTitle: 'Proizvodi',
+            rule: 'unosproizvoda'
+          }
+        },
+        
+        {
           path: '/sopovi',
           name: 'app-sopovi',
           component: () => import('@/views/apps/user/user-list/UserList.vue'),
@@ -1322,9 +1349,10 @@ const router = new Router({
           component: () => import('@/views/pages/login/Login.vue'),
           meta: {
             
-             allowAnonymous: true
-           , 
-            rule: 'public'
+             allowAnonymous: true,
+             rule:'public'
+            
+            
           }
         },
         {
@@ -1334,7 +1362,7 @@ const router = new Router({
           meta: {
             allowAnonymous: true
             , 
-            rule: 'public'
+            rule: 'superpublicadmin'
           }
         },
         {
@@ -1439,7 +1467,7 @@ if (authRequired && !isLoggedIn()) {
 } else {
   if(to.path=="/" && from.path=="/pages/login")
   {
-
+    next();
   }
   else{
   next();
