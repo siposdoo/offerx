@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Picture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -40,10 +41,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $product = new Product();
 
  $data = $request->only($product->getFillable());
 $data['kategorija']=1;
+$data['us_id']=$user->id;
 $data['subkategorija']=1;
 $data['proizvodjac']=1;
 if(!$data['sifradobavljaca']){
