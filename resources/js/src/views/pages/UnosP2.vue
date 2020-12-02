@@ -94,8 +94,7 @@
         <vs-th>Image</vs-th>
         <vs-th sort-key="ida">#ID</vs-th>
         <vs-th sort-key="naslovweb">Naziv</vs-th>
-        <vs-th sort-key="podnaslovweb">Podnaslov</vs-th>
-        <vs-th sort-key="kolicina">Količina</vs-th>
+         <vs-th sort-key="kolicina">Količina</vs-th>
         <vs-th sort-key="pjcijena">Cijena(javna)</vs-th>
         <vs-th sort-key="shopcijena">Cijena(shop)</vs-th>
         <vs-th sort-key="mincijena">Cijena(min)</vs-th>
@@ -116,12 +115,10 @@
               <p class="product-name font-medium truncate">{{ tr.ida }}</p>
             </vs-td>
             <vs-td>
-              <p class="product-name font-medium truncate">{{ tr.naslovweb }}</p>
+              <p class="product-name font-small truncate">{{ tr.naslovweb }}</p>
             </vs-td>
 
-            <vs-td>
-              <p class="product-category">{{ tr.podnaslovweb }}</p>
-            </vs-td>
+             
  <vs-td>
               <p class="product-category">{{ tr.kolicina }}</p>
             </vs-td>
