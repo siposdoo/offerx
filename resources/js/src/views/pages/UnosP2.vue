@@ -110,7 +110,7 @@
           <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
 
             <vs-td class="img-container">
-              <img :src="tr.img" class="product-img" />
+              <img :src="getProfileImage(tr.pictures)" class="product-img" />
             </vs-td>
  <vs-td>
               <p class="product-name font-medium truncate">{{ tr.ida }}</p>
@@ -181,6 +181,16 @@ export default {
     }
   },
   methods: {
+      getProfileImage(pictures){
+ 
+    var result= pictures.filter(function (picture) {  return picture.type === 1 });
+ if(result.length>0){
+return result[0].urlImage
+}else
+{
+    return 'images/pages/404.png'
+}
+      },
     getProducts(){
 
      this.$http.get('/api/auth/products', { headers:{

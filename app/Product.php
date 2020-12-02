@@ -19,14 +19,14 @@ protected $fillable = [
 
     public function user()
 {
-    return $this->belongsTo('App\Models\User', 'user_id');
+    return $this->belongsTo('App\User', 'user_id');
 }
-public function images()
+public function pictures()
 {
-    return $this->hasMany('App\Models\Image', 'product_id');
+    return $this->hasMany('App\Picture', 'product_id','id');
 }
 public function prices()
 {
-    return $this->hasMany('App\Models\Price');
+    return $this->hasMany('App\Price');
 }
 }

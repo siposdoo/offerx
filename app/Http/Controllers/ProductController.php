@@ -16,9 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $products = Product::with('pictures')->get();
+        $result=$products;
         return response()->json([
            
-            'products' => Product::All()
+            'products' => $result
             
             ]);
     }
